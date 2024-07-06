@@ -34,53 +34,60 @@
       <section>
         <section class="attributes">
           <div class="scores">
+            <script src="scripts/script.js"></script>
             <ul>
               <li>
                 <div class="score">
-                  <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" id="Strengthscore"/>
+                  <label for="Strengthscore">Strength</label>
+                  <input name="Strengthscore" placeholder="10" id="Strengthscore" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Strengthmod" placeholder="+0" id="Strengthmod"/>
+                  <input name="Strengthmod" placeholder="+0" id="Strengthmod"/ readonly>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" id="Dexterityscore"/>
+                  <label for="Dexterityscore">Dexterity</label>
+                  <input name="Dexterityscore" placeholder="10" id="Dexterityscore" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Dexteritymod" placeholder="+0" id="Dexteritymod"/>
+                  <input name="Dexteritymod" placeholder="+0" id="Dexteritymod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" id="Constitutionscore"/>
+                  <label for="Constitutionscore">Constitution</label>
+                  <input name="Constitutionscore" placeholder="10" id="Constitutionscore" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Constitutionmod" placeholder="+0" id="Constitutionmod"/>
+                  <input name="Constitutionmod" placeholder="+0" id="Constitutionmod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" id="Wisdomscore"/>
+                  <label for="Wisdomscore">Wisdom</label>
+                  <input name="Wisdomscore" placeholder="10" id="Wisdomscore" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Wisdommod" placeholder="+0" id="Wisdommod"/>
+                  <input name="Wisdommod" placeholder="+0" id="Wisdommod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10" id="Intelligencescore"/>
+                  <label for="Intelligencescore">Intelligence</label>
+                  <input name="Intelligencescore" placeholder="10" id="Intelligencescore" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Intelligencemod" placeholder="+0" id="Intelligencemod"/>
+                  <input name="Intelligencemod" placeholder="+0" id="Intelligencemod" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" id="Charismascore"/>
+                  <label for="Charismascore">Charisma</label>
+                  <input name="Charismascore" placeholder="10" id="Charismascore" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Charismamod" placeholder="+0" id="Charismamod"/>
+                  <input name="Charismamod" placeholder="+0" id="Charismamod" readonly/>
                 </div>
               </li>
             </ul>
@@ -90,7 +97,7 @@
               <div class="label-container">
                 <label for="inspiration">Inspiration</label>
               </div>
-              <input name="inspiration" type="checkbox" id="inspiration"/>
+              <input name="inspiration" type="text" placeholder="d6" id="inspiration"/>
             </div>
             <div class="proficiencybonus box">
               <div class="label-container">
