@@ -1,6 +1,7 @@
 <form class="charsheet">
   <head>
     <header>
+      <script src="scripts/script.js"></script>
       <link rel="stylesheet" href="style.css"></link>
       <section class="charname">
         <label for="charname">Character Name</label><input name="charname" placeholder="Thoradin Fireforge" id="charname"/>
@@ -34,60 +35,59 @@
       <section>
         <section class="attributes">
           <div class="scores">
-            <script src="scripts/script.js"></script>
             <ul>
               <li>
                 <div class="score">
-                  <label for="Strengthscore">Strength</label>
-                  <input name="Strengthscore" placeholder="10" id="Strengthscore" onchange="updateModifier(this)"/>
+                  <label for="strength-score">Strength</label>
+                  <input name="strength-score" placeholder="10" id="strength-score" value="10" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Strengthmod" placeholder="+0" id="Strengthmod"/ readonly>
+                  <input name="strength-mod" placeholder="+0" id="strength-mod" value="+0" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Dexterityscore">Dexterity</label>
-                  <input name="Dexterityscore" placeholder="10" id="Dexterityscore" onchange="updateModifier(this)"/>
+                  <label for="dexterity-score">Dexterity</label>
+                  <input name="dexterity-score" placeholder="10" id="dexterity-score" value="10" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Dexteritymod" placeholder="+0" id="Dexteritymod" readonly/>
+                  <input name="dexterity-mod" placeholder="+0" id="dexterity-mod" value="+0" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Constitutionscore">Constitution</label>
-                  <input name="Constitutionscore" placeholder="10" id="Constitutionscore" onchange="updateModifier(this)"/>
+                  <label for="constitution-score">Constitution</label>
+                  <input name="constitution-score" placeholder="10" id="constitution-score" value="10" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Constitutionmod" placeholder="+0" id="Constitutionmod" readonly/>
+                  <input name="constitution-mod" placeholder="+0" id="constitution-mod" value="+0" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Wisdomscore">Wisdom</label>
-                  <input name="Wisdomscore" placeholder="10" id="Wisdomscore" onchange="updateModifier(this)"/>
+                  <label for="wisdom-score">Wisdom</label>
+                  <input name="wisdom-score" placeholder="10" id="wisdom-score" value="10" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Wisdommod" placeholder="+0" id="Wisdommod" readonly/>
+                  <input name="wisdom-mod" placeholder="+0" id="wisdom-mod" value="+0" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Intelligencescore">Intelligence</label>
-                  <input name="Intelligencescore" placeholder="10" id="Intelligencescore" onchange="updateModifier(this)"/>
+                  <label for="intelligence-score">Intelligence</label>
+                  <input name="intelligence-score" placeholder="10" id="intelligence-score" value="10" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Intelligencemod" placeholder="+0" id="Intelligencemod" readonly/>
+                  <input name="intelligence-mod" placeholder="+0" id="intelligence-mod" value="+0" readonly/>
                 </div>
               </li>
               <li>
                 <div class="score">
-                  <label for="Charismascore">Charisma</label>
-                  <input name="Charismascore" placeholder="10" id="Charismascore" onchange="updateModifier(this)"/>
+                  <label for="charisma-score">Charisma</label>
+                  <input name="charisma-score" placeholder="10" id="charisma-score" value="10" onchange="updateModifier(this)"/>
                 </div>
                 <div class="modifier">
-                  <input name="Charismamod" placeholder="+0" id="Charismamod" readonly/>
+                  <input name="charisma-mod" placeholder="+0" id="charisma-mod" value="+0" readonly/>
                 </div>
               </li>
             </ul>
@@ -103,39 +103,40 @@
               <div class="label-container">
                 <label for="proficiencybonus">Proficiency Bonus</label>
               </div>
-              <input name="proficiencybonus" placeholder="+2" id="proficiencybonus"/>
+              <input name="proficiencybonus" placeholder="+2" id="proficiencybonus" value="+2"/>
             </div>
             <div class="saves list-section box">
+              <script src="scripts/saves.js"></script>
               <ul>
                 <li>
-                  <label for="Strength-save">Strength</label>
-                  <input name="Strength-save" placeholder="+0" type="text" id="Strength-save"/>
-                  <input name="Strength-save-prof" type="checkbox" id="Strength-save-prof"/>
+                  <label for="strength-save">Strength</label>
+                  <input name="strength-save" placeholder="+0" type="text" id="strength-save" value="+0" />
+                  <input name="strength-save-prof" type="checkbox" id="strength-save-prof"/>
                 </li>
                 <li>
-                  <label for="Dexterity-save">Dexterity</label>
-                  <input name="Dexterity-save" placeholder="+0" type="text" id="Dexterity-save"/>
-                  <input name="Dexterity-save-prof" type="checkbox" id="Dexterity-save-prof"/>
+                  <label for="dexterity-save">Dexterity</label>
+                  <input name="dexterity-save" placeholder="+0" type="text" id="dexterity-save" value="+0" />
+                  <input name="dexterity-save-prof" type="checkbox" id="dexterity-save-prof"/>
                 </li>
                 <li>
-                  <label for="Constitution-save">Constitution</label>
-                  <input name="Constitution-save" placeholder="+0" type="text" id="Constitution-save"/>
-                  <input name="Constitution-save-prof" type="checkbox" id="Constitution-save-prof"/>
+                  <label for="constitution-save">Constitution</label>
+                  <input name="constitution-save" placeholder="+0" type="text" id="constitution-save" value="+0" />
+                  <input name="constitution-save-prof" type="checkbox" id="constitution-save-prof"/>
                 </li>
                 <li>
-                  <label for="Wisdom-save">Wisdom</label>
-                  <input name="Wisdom-save" placeholder="+0" type="text" id="Wisdom-save"/>
-                  <input name="Wisdom-save-prof" type="checkbox" id="Wisdom-save-prof"/>
+                  <label for="wisdom-save">Wisdom</label>
+                  <input name="wisdom-save" placeholder="+0" type="text" id="wisdom-save" value="+0" />
+                  <input name="wisdom-save-prof" type="checkbox" id="wisdom-save-prof"/>
                 </li>
                 <li>
-                  <label for="Intelligence-save">Intelligence</label>
-                  <input name="Intelligence-save" placeholder="+0" type="text" id="Intelligence-save"/>
-                  <input name="Intelligence-save-prof" type="checkbox" id="Intelligence-save-prof"/>
+                  <label for="intelligence-save">Intelligence</label>
+                  <input name="intelligence-save" placeholder="+0" type="text" id="intelligence-save" value="+0" />
+                  <input name="intelligence-save-prof" type="checkbox" id="intelligence-save-prof"/>
                 </li>
                 <li>
-                  <label for="Charisma-save">Charisma</label>
-                  <input name="Charisma-save" placeholder="+0" type="text" id="Charisma-save"/>
-                  <input name="Charisma-save-prof" type="checkbox" id="Charisma-save-prof"/>
+                  <label for="charisma-save">Charisma</label>
+                  <input name="charisma-save" placeholder="+0" type="text" id="charisma-save" value="+0" />
+                  <input name="charisma-save-prof" type="checkbox" id="charisma-save-prof" />
                 </li>
               </ul>
               <div class="label">
