@@ -22,7 +22,9 @@ function updateModifier(scoreElement){
     }
     else{
         console.log("Clearing modifier");
-        scoreElement.value = 10
+        scoreElement.value = 10;
+        // To fix bug where clearing value but not typing anything in wouldnt trigger event
+        scoreElement.dispatchEvent(new Event('change'));
     }
 }
 
