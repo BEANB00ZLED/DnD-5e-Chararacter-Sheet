@@ -63,5 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching backgrounds:', error);
             
         });
+    // Fetch classes from api and populate selections
+    fetch("https://www.dnd5eapi.co/api/classes", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            const dropdown = document.getElementById('class');
+            const data = result.results;
+            data.forEach(alignment => {
+                const option = document.createElement('option');
+                option.value = alignment.url;s
+                option.textContent = alignment.name;
+                option.id = alignment.index;
+                dropdown.appendChild(option);
+            });
+        })
+        .catch((error) => {
+            console.error('Error fetching backgrounds:', error);
+            
+        });
 });
 

@@ -86,7 +86,7 @@ form.charsheet header section.charname {
   border: 1px solid black;
   border-right: 0;
   border-radius: 10px 0 0 10px;
-  padding: 5px 0;
+  padding: 7px 0;
   background-color: #eee;
   width: 30%;
   display: flex;
@@ -95,13 +95,37 @@ form.charsheet header section.charname {
   top: 0;
   margin: auto;
 }
-form.charsheet header section.charname input {
-  padding: 0.5em;
-  margin: 5px;
-  border: 0;
+form.charsheet header section.charname ul{
+  display: flex;
 }
-form.charsheet header section.charname label {
-  padding-left: 1em;
+form.charsheet header section.charname ul li{
+  display: flex;
+  flex-direction: column-reverse;
+}
+form.charsheet header section.charname ul li.major{
+  width: 80%;
+}
+form.charsheet header section.charname ul li.minor{
+  width: 20%;
+}
+form.charsheet header section.charname ul li input {
+  padding: 0.5em;
+  margin: 0px;
+  border: 1px solid black;
+  border-right: 0;
+  border-left: 0;
+}
+form.charsheet header section.charname ul li label {
+  padding-left: .5em;
+}
+form.charsheet header section.charname ul li.major input {
+  border-radius: 10px 0 0 10px;
+}
+form.charsheet header section.charname ul li.minor input{
+  border: 1px solid black;
+  border-radius: 0 10px 10px 0;
+  border-right: 0px;
+  text-align: center;
 }
 form.charsheet header section.misc {
   width: 70%;
@@ -119,6 +143,10 @@ form.charsheet header section.misc ul li {
   width: 33.33333%;
   display: flex;
   flex-direction: column-reverse;
+}
+.class-level {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 form.charsheet header section.misc ul li label {
   margin-bottom: 5px;

@@ -5,12 +5,18 @@
       <script src="scripts/api.js"></script>
       <link rel="stylesheet" href="style.css"></link>
       <section class="charname">
-        <label for="charname">Character Name</label><input name="charname" placeholder="Thoradin Fireforge" id="charname"/>
+        <ul>
+          <li class="major"><label for="charname">Character Name</label><input name="charname" placeholder="Thoradin Fireforge" id="charname"/></li>
+          <li class="minor"><label for="level">Level</label><input name="Level" placeholder="1" id="level"/></li>
+        </ul>
       </section>
       <section class="misc">
         <ul>
           <li>
-            <label for="classlevel">Class & Level</label><input name="classlevel" placeholder="Paladin 2" id="classlevel"/>
+            <label for="class">Class</label>
+            <select name="class" placeholder="Paladin" id="class">
+              <option disabled selected value> -- Select Class -- </option>
+            </select>
           </li>
           <li>
             <label for="background">Background</label>
