@@ -2,6 +2,7 @@
   <head>
     <header>
       <script src="scripts/abilities.js"></script>
+      <script src="scripts/api.js"></script>
       <link rel="stylesheet" href="style.css"></link>
       <section class="charname">
         <label for="charname">Character Name</label><input name="charname" placeholder="Thoradin Fireforge" id="charname"/>
@@ -12,16 +13,25 @@
             <label for="classlevel">Class & Level</label><input name="classlevel" placeholder="Paladin 2" id="classlevel"/>
           </li>
           <li>
-            <label for="background">Background</label><input name="background" placeholder="Acolyte" id="background"/>
+            <label for="background">Background</label>
+            <select name="background" placeholder="Acolyte" id="background">
+              <option disabled selected value> -- Select Background -- </option>
+            </select>
           </li>
           <li>
             <label for="playername">Player Name</label><input name="playername" placeholder="Player McPlayerface" id="playername">
           </li>
           <li>
-            <label for="race">Race</label><input name="race" placeholder="Half-elf" id="race"/>
+            <label for="race">Race</label>
+            <select name="race" placeholder="Half-elf" id="race">
+              <option disabled selected value> -- Select Race -- </option>
+            </select>
           </li>
           <li>
-            <label for="alignment">Alignment</label><input name="alignment" placeholder="Lawful Good" id="alignment"/>
+            <label for="alignment">Alignment</label>
+            <select name="alignment" placeholder="Lawful Good" id="alignment">
+              <option disabled selected value> -- Select Alignment -- </option>
+            </select>
           </li>
           <li>
             <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="3240" id="experiencepoints"/>
