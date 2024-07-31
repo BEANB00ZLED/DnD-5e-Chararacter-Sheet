@@ -63,6 +63,9 @@ window.onload = function() {
     // Add update for passive perception
     document.getElementById('perception').addEventListener('change', perception_passivePerception)
 
+    // Add update for proff bonus when level changes
+    document.getElementById('level').addEventListener('change', level_proffBonus)
+
 };
 
 // Calculates saving throw based on ability mod, proficiency score, and if proficient in throw
@@ -166,4 +169,13 @@ function abilityMod_savesSkills(){
 function perception_passivePerception(){
     const passivePerception = document.getElementById('passive-perception');
     passivePerception.value = 10 + (this.value != "" ? parseInt(this.value) : 0);
+}
+
+// Updates proff bonus with level change
+function level_proffBonus(){
+    const proffBonus = document.getElementById("proficiencybonus");
+    let level = this.value != "" ? parseInt(this.value) : 0;
+    let bonus = Math.floor((level - 1) / 4) + 2
+    proffBonus.value = formatInt(bonus)
+    proffBonus.dispatchEvent(new Event('change'))
 }

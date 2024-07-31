@@ -79,7 +79,7 @@ form.charsheet label {
 }
 form.charsheet header {
   display: flex;
-  align-contents: stretch;
+  align-content: stretch;
   align-items: stretch;
 }
 form.charsheet header section.charname {
@@ -653,4 +653,33 @@ form.charsheet main section.features div textarea {
   border: 0;
   padding: 5px;
   height: 43em;
+}
+/*Testing below this*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px; /* Adjust width as needed */
+  background-color: #aaa;
+  color: #fff;
+  text-align: left;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Adjust to place the tooltip above or below the text */
+  left: 10%;
+  transform: translateX(-50%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip.show .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
