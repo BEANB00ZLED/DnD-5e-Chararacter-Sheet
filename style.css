@@ -654,16 +654,18 @@ form.charsheet main section.features div textarea {
   padding: 5px;
   height: 43em;
 }
+
 /*Testing below this*/
 .tooltip {
   position: relative;
   display: inline-block;
   cursor: pointer;
+  margin: 0.5;
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 300px; /* Adjust width as needed */
+  width: 500px; /* Adjust width as needed */
   background-color: #aaa;
   color: #fff;
   text-align: left;
