@@ -33,8 +33,6 @@ form.charsheet {
   width: 800px;
   right: 0;
   left: 0;
-  margin-right: auto;
-  margin-left: auto;
   margin-top: 10px;
 }
 form.charsheet div.textblock {
@@ -73,7 +71,7 @@ form.charsheet :-ms-input-placeholder {
 form.charsheet ::placeholder {
   color: #bbb;
 }
-form.charsheet label {
+form.charsheet label, aside label {
   text-transform: uppercase;
   font-size: 12px;
 }
@@ -684,4 +682,77 @@ form.charsheet main section.features div textarea {
 .tooltip.show .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.container {
+  display: flex;
+}
+
+aside {
+  flex: 1;
+  border-radius: 10px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #bbb;
+  justify-content: space-around;
+  align-items: center;
+}
+aside > section {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+aside > section > h2 {
+  text-align: center;
+}
+
+aside > section.spells > div.spell-slots {
+  align-content: center;
+  display: flex;
+  flex-direction: column-reverse;
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  align-items: center;
+  margin: 10px;
+}
+
+aside > section.spells > div.spell-slots > label {
+  text-align: center;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles > div{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  width: 100%;
+  align-items: center;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles > div > label {
+  font-size: 8px;
+  text-align: center;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles > div > input[type=checkbox] {
+  -webkit-appearance: none;
+    -moz-appearance: none;
+      appearance: none;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  order: 1;
+  cursor: pointer;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles > div > input[type=checkbox]:checked {
+  background-color: black; /* Example: black background when checked */
 }
