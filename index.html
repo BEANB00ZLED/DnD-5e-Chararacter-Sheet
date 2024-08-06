@@ -455,7 +455,7 @@
     </body>
   </form>
   <aside>
-    <section class="Spells">
+    <section class="spells">
       <h2>SPELLCASTING</h2>
       <div class="spell-slots">
         <label>Spell Slots</label>
@@ -511,6 +511,10 @@
           </div>
         </div>
       </div>
+      <div class="search">
+        <input type="text" id="searchField" placeholder="Search spell..."/>
+        <button type="submit" id="searchButton"><b>search</b></button>
+      </div>
       <div class="spell-card">
         <div class="spell-name">
           <label>Spell Name</label>
@@ -518,13 +522,13 @@
         <table class="spell-specs">
           <tr>
             <td>
-              <div>
+              <div class="casting-time">
                 <label>Casting Time</label>
                 <p>1 Action</p>
               </div>
             </td>
             <td>
-              <div>
+              <div class="range">
                 <label>Range</label>
                 <p>100ft</p>
               </div>
@@ -532,13 +536,13 @@
           </tr>
           <tr>
             <td>
-              <div>
+              <div class="components">
                 <label>Components</label>
                 <p>V, S, M</p>
               </div>
             </td>
             <td>
-              <div>
+              <div class="duration">
                 <label>Duration</label>
                 <p>1 Minute</p>
               </div>
@@ -546,7 +550,7 @@
           </tr>          
         </table>
         <div class="spell-desc">
-          <p>FIREBALL MF</p>
+          <p>ITS WIZARD TIME MF, FIREBALL!!</p>
         </div>
       </div>
     </section>

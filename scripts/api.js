@@ -90,6 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Make hitdice update with class and level
     level.addEventListener('change', classLevel_hitDice);
     charClass.addEventListener('change', classLevel_hitDice);
+
+    // Add search function to spell
+    const searchButton = document.getElementById("searchButton");
+    searchButton.addEventListener("click", searchButton_spellApi);
     
 });
 
@@ -180,5 +184,56 @@ async function classLevel_hitDice(){
         })
         .catch((error) => {
             console.error('Error fetching class hit die:', error);
+        });
+}
+
+function searchButton_spellApi(){
+
+    function populateSpellCard(name, castingTime, range, components, duration, description){
+        const spellCard = document.getElementsByClassName("spell-card")[0];
+            // Set the spell name
+            const nameLabel = spellCard.querySelector("div.spell-name > label");
+            nameLabel.innerText = name;
+            // Set the spell casting time
+            const castingTimeP = spellCard.querySelector("table.spell-specs div.casting-time > p");
+            castingTimeP.innerText = castingTime;
+            // Set spell range
+            const rangeP = spellCard.querySelector("table.spell-specs div.range > p");
+            rangeP.innerText = range;
+            // Set spell components
+            const componentsP = spellCard.querySelector("table.spell-specs div.components > p");
+            componentsP.innerText = components;
+            // Set spell duration
+            const durationP = spellCard.querySelector("table.spell-specs div.duration > p");
+            durationP.innerText = duration;
+            // Set spell description
+            const descriptionP = spellCard.querySelector("div.spell-desc > p");
+            descriptionP.innerText = description;
+    }
+
+    const searchField = document.getElementById("searchField");
+    fetch("https://www.dnd5eapi.co/api/spells/" + searchField.value)
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+
+            const name = result.name || "Spell Name";
+            const casting_time = result.casting_time || "Unknown casting time";
+            const range = result.range || "Unknown range";
+            const components = result.components || "Unknown components";
+            const duration = result.duration || "Unknown duration";
+            const description = (result.desc || result.higher_level) ? result.desc + "\n\n" + result.higher_level : "Unkown spell, please try again";
+
+            populateSpellCard(
+                name,
+                casting_time,
+                range,
+                components,
+                duration,
+                description
+            );
+        })
+        .catch((error) => {
+            console.error('Error fetching searched spell: ', error)
         });
 }

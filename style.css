@@ -697,17 +697,19 @@ aside {
   justify-content: space-around;
   align-items: center;
 }
-aside > section {
+aside > section.spells {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: center;
 }
 
-aside > section > h2 {
+aside > section.spells > h2 {
   text-align: center;
 }
 
-aside > section.spells > div.spell-slots {
+section.spells > div.spell-slots {
   align-content: center;
   display: flex;
   flex-direction: column-reverse;
@@ -716,19 +718,20 @@ aside > section.spells > div.spell-slots {
   border-radius: 10px;
   align-items: center;
   margin: 10px;
+  width: 90%;
 }
 
-aside > section.spells > div.spell-slots > label {
+section.spells > div.spell-slots > label {
   text-align: center;
 }
 
-aside > section.spells > div.spell-slots > div.bubbles {
+section.spells > div.spell-slots > div.bubbles {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
-aside > section.spells > div.spell-slots > div.bubbles > div{
+section.spells > div.spell-slots > div.bubbles > div{
   display: flex;
   flex-direction: column;
   margin: 5px;
@@ -766,6 +769,7 @@ aside > section.spells > div.spell-card {
   border-radius: 5px;
   align-items: center;
   margin: 10px;
+  width: 90%;
 }
 
 aside > section.spells > div.spell-card > div.spell-name {
@@ -835,6 +839,37 @@ div.spell-desc {
 div.spell-desc > p {
   text-align: left;
 }
+
+section.spells > div.search {
+  width: 90%;
+  align-content: center;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+section.spells > div.search input {
+  width: 80%;
+  border: 1px solid black;
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  padding-left: 10px;
+  float: left;
+}
+
+section.spells > div.search button {
+  width: 20%;
+  float: right;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  background-color: white;
+}
+
+section.spells > div.search button:hover {
+  background-color: #bbb;
+}
+
 
 
 
