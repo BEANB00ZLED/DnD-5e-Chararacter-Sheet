@@ -693,7 +693,7 @@ aside {
   border-radius: 10px;
   margin-left: 1rem;
   margin-right: 1rem;
-  background-color: #bbb;
+  background-color: #eee;
   justify-content: space-around;
   align-items: center;
 }
@@ -756,3 +756,86 @@ aside > section.spells > div.spell-slots > div.bubbles > div > input[type=checkb
 aside > section.spells > div.spell-slots > div.bubbles > div > input[type=checkbox]:checked {
   background-color: black; /* Example: black background when checked */
 }
+
+aside > section.spells > div.spell-card {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  background: #bbb;
+  border: 1px solid black;
+  border-radius: 5px;
+  align-items: center;
+  margin: 10px;
+}
+
+aside > section.spells > div.spell-card > div.spell-name {
+  background: white;
+  border-radius: 10px 10px 0 0;
+  width: 90%;
+  text-align: center;
+  margin: 10px;
+}
+
+table.spell-specs {
+  display: table;
+  width: 90%;
+  text-align: center;
+  background-color: white;
+  border-collapse: collapse;
+}
+
+table.spell-specs tr {
+  display: table-row;
+}
+
+table.spell-specs td {
+  display: table-cell;
+  width: 50%;
+  border: 5px solid #bbb;
+}
+
+table.spell-specs td div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+table.spell-specs td div p {
+  margin: 5px 0 5px 0;
+  padding: 0;
+}
+
+/* Few below are for no outside borders in table */
+table.spell-specs tr td:first-child, th:first-child{
+  border-left: none;
+}
+
+table.spell-specs tr:first-child th{
+  border-top: none;
+}
+
+table.spell-specs tr td:last-child, th:last-child{
+  border-right: none;
+}
+
+table.spell-specs tr:last-child td{
+  border-bottom: none;
+}
+
+div.spell-desc {
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  width: 90%;
+  margin: 20px 0 20px 0;
+}
+
+div.spell-desc > p {
+  text-align: left;
+}
+
+
+
+
