@@ -833,7 +833,7 @@ div.spell-desc {
   background-color: white;
   border-radius: 0 0 10px 10px;
   width: 90%;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 0 0;
 }
 
 div.spell-desc > p {
@@ -870,7 +870,21 @@ section.spells > div.search button:hover {
   background-color: #bbb;
 }
 
+div.spell-misc {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
 
+div.spell-misc p {
+  padding: 0;
+  margin: 10px 0 5px 0;
+  color: white;
+}
+
+div.duration label {
+  height: 100%;
+}
 
 
 

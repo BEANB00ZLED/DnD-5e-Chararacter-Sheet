@@ -189,26 +189,32 @@ async function classLevel_hitDice(){
 
 function searchButton_spellApi(){
 
-    function populateSpellCard(name, castingTime, range, components, duration, description){
+    function populateSpellCard(name, castingTime, range, components, duration, description, level, school){
         const spellCard = document.getElementsByClassName("spell-card")[0];
-            // Set the spell name
-            const nameLabel = spellCard.querySelector("div.spell-name > label");
-            nameLabel.innerText = name;
-            // Set the spell casting time
-            const castingTimeP = spellCard.querySelector("table.spell-specs div.casting-time > p");
-            castingTimeP.innerText = castingTime;
-            // Set spell range
-            const rangeP = spellCard.querySelector("table.spell-specs div.range > p");
-            rangeP.innerText = range;
-            // Set spell components
-            const componentsP = spellCard.querySelector("table.spell-specs div.components > p");
-            componentsP.innerText = components;
-            // Set spell duration
-            const durationP = spellCard.querySelector("table.spell-specs div.duration > p");
-            durationP.innerText = duration;
-            // Set spell description
-            const descriptionP = spellCard.querySelector("div.spell-desc > p");
-            descriptionP.innerText = description;
+        // Set the spell name
+        const nameLabel = spellCard.querySelector("div.spell-name > label");
+        nameLabel.innerText = name;
+        // Set the spell casting time
+        const castingTimeP = spellCard.querySelector("table.spell-specs div.casting-time > p");
+        castingTimeP.innerText = castingTime;
+        // Set spell range
+        const rangeP = spellCard.querySelector("table.spell-specs div.range > p");
+        rangeP.innerText = range;
+        // Set spell components
+        const componentsP = spellCard.querySelector("table.spell-specs div.components > p");
+        componentsP.innerText = components;
+        // Set spell duration
+        const durationP = spellCard.querySelector("table.spell-specs div.duration > p");
+        durationP.innerText = duration;
+        // Set spell description
+        const descriptionP = spellCard.querySelector("div.spell-desc > p");
+        descriptionP.innerText = description;
+        // Set spell class
+        const classP = spellCard.querySelectorAll("div.spell-misc > p")[0];
+        classP.innerText = level;
+        // Set level and school
+        const levelScoolP = spellCard.querySelectorAll("div.spell-misc > p")[1];
+        levelScoolP.innerText = school
     }
 
     const searchField = document.getElementById("searchField");
@@ -217,23 +223,56 @@ function searchButton_spellApi(){
         .then((result) => {
             console.log(result)
 
-            const name = result.name || "Spell Name";
-            const casting_time = result.casting_time || "Unknown casting time";
-            const range = result.range || "Unknown range";
-            const components = result.components || "Unknown components";
-            const duration = result.duration || "Unknown duration";
-            const description = (result.desc || result.higher_level) ? result.desc + "\n\n" + result.higher_level : "Unkown spell, please try again";
-
+            let name = result.name;
+            let casting_time = result.casting_time;
+            let range = result.range;
+            let components = result.components;
+            if (result.material.match(/\d+gp/i)) {
+                components = components + '\n(' + result.material + ')';
+            }
+            let duration = result.duration;
+            let description = (result.desc && result.higher_level) ? result.desc + "\n\n" + result.higher_level : result.desc;
+            let level = '';
+            switch (result.level) {
+                case undefined:
+                    level = undefined;
+                    break;
+                case 1:
+                    level = '1st';
+                    break
+                case 2:
+                    level = '2nd';
+                    break;
+                case 3:
+                    level = '3rd';
+                    break;
+                default:
+                    level = result.level + "th";
+            }
+            level = level + ' level';
+            let school = result.school.name;
             populateSpellCard(
                 name,
                 casting_time,
                 range,
                 components,
                 duration,
-                description
+                description,
+                level,
+                school
             );
         })
         .catch((error) => {
             console.error('Error fetching searched spell: ', error)
+            populateSpellCard(
+                'Unkown Spell',
+                'Unkown',
+                'Uknown',
+                'Unknown',
+                'Unknown',
+                'Please try again',
+                'Unkown level',
+                'Unknown school'
+            );
         });
 }
