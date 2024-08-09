@@ -886,5 +886,13 @@ div.duration label {
   height: 100%;
 }
 
+div.search datalist {
+  display: none;
+}
+
+div.search {
+  position: relative;
+}
+
 
 

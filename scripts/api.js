@@ -91,11 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
     level.addEventListener('change', classLevel_hitDice);
     charClass.addEventListener('change', classLevel_hitDice);
 
+    // Populate spell auto suggest
+    fetch("https://www.dnd5eapi.co/api/spells/", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            const spellOptions = result.results.map(spell => spell.name);
+            const datalist  = document.getElementById('spell-suggest');
+            for (let i = 0; spellOptions[i]; i++){
+                const option = document.createElement('option');
+                option.value = spellOptions[i];
+                option.innerText = spellOptions[i];
+                datalist.appendChild(option);
+            }
+        })
+        .catch((error) => {
+            console.error('Error fetching initial spell names', error);
+        });
     // Add search function to spell
     const searchButton = document.getElementById("searchButton");
     searchButton.addEventListener("click", searchButton_spellApi);
     
 });
+
 
 function addFeature(jsonFeature){
     // Get feature section and add feat
@@ -218,7 +235,7 @@ function searchButton_spellApi(){
     }
 
     const searchField = document.getElementById("searchField");
-    fetch("https://www.dnd5eapi.co/api/spells/" + searchField.value)
+    fetch("https://www.dnd5eapi.co/api/spells/" + searchField.value.toLowerCase().replace(/\s+/g, '-'))
         .then((response) => response.json())
         .then((result) => {
             console.log(result)
@@ -227,7 +244,8 @@ function searchButton_spellApi(){
             let casting_time = result.casting_time;
             let range = result.range;
             let components = result.components;
-            if (result.material.match(/\d+gp/i)) {
+            // Have to have and because some spells have no materials
+            if (result.material && result.material.match(/\d+gp/i)) {
                 components = components + '\n(' + result.material + ')';
             }
             let duration = result.duration;
