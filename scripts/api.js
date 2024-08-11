@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch("https://www.dnd5eapi.co/api/spells/", requestOptions)
         .then((response) => response.json())
         .then((result) => {
-            const spellOptions = result.results.map(spell => spell.name);
+            const spellOptions = result.results;
             const datalist  = document.getElementById('spell-suggest');
             for (let i = 0; spellOptions[i]; i++){
                 const option = document.createElement('option');
-                option.value = spellOptions[i];
-                option.innerText = spellOptions[i];
+                option.value = spellOptions[i].name;
+                option.id = spellOptions[i].index;
                 datalist.appendChild(option);
             }
         })
@@ -209,33 +209,37 @@ function searchButton_spellApi(){
     function populateSpellCard(name, castingTime, range, components, duration, description, level, school){
         const spellCard = document.getElementsByClassName("spell-card")[0];
         // Set the spell name
-        const nameLabel = spellCard.querySelector("div.spell-name > label");
+        const nameLabel = spellCard.querySelector("div.spell-name  label");
         nameLabel.innerText = name;
         // Set the spell casting time
-        const castingTimeP = spellCard.querySelector("table.spell-specs div.casting-time > p");
+        const castingTimeP = spellCard.querySelector("table.spell-specs div.casting-time  p");
         castingTimeP.innerText = castingTime;
         // Set spell range
-        const rangeP = spellCard.querySelector("table.spell-specs div.range > p");
+        const rangeP = spellCard.querySelector("table.spell-specs div.range  p");
         rangeP.innerText = range;
         // Set spell components
-        const componentsP = spellCard.querySelector("table.spell-specs div.components > p");
+        const componentsP = spellCard.querySelector("table.spell-specs div.components  p");
+        console.log(components)
         componentsP.innerText = components;
         // Set spell duration
-        const durationP = spellCard.querySelector("table.spell-specs div.duration > p");
+        const durationP = spellCard.querySelector("table.spell-specs div.duration  p");
         durationP.innerText = duration;
         // Set spell description
-        const descriptionP = spellCard.querySelector("div.spell-desc > p");
+        const descriptionP = spellCard.querySelector("div.spell-desc  p");
         descriptionP.innerText = description;
         // Set spell class
-        const classP = spellCard.querySelectorAll("div.spell-misc > p")[0];
+        const classP = spellCard.querySelectorAll("div.spell-misc  p")[0];
         classP.innerText = level;
         // Set level and school
-        const levelScoolP = spellCard.querySelectorAll("div.spell-misc > p")[1];
-        levelScoolP.innerText = school
+        const levelScoolP = spellCard.querySelectorAll("div.spell-misc  p")[1];
+        levelScoolP.innerText = school;
     }
 
     const searchField = document.getElementById("searchField");
-    fetch("https://www.dnd5eapi.co/api/spells/" + searchField.value.toLowerCase().replace(/\s+/g, '-'))
+    const spellOptions = document.querySelectorAll("div.search datalist option");
+    console.log(spellOptions)
+    const option = Array.from(spellOptions).find(option => option.value.toLowerCase() == searchField.value.toLowerCase())
+    fetch("https://www.dnd5eapi.co/api/spells/" + (option ? option.id : '!!!'), requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log(result)
@@ -243,7 +247,7 @@ function searchButton_spellApi(){
             let name = result.name;
             let casting_time = result.casting_time;
             let range = result.range;
-            let components = result.components;
+            let components = result.components.join(', ');
             // Have to have and because some spells have no materials
             if (result.material && result.material.match(/\d+gp/i)) {
                 components = components + '\n(' + result.material + ')';
@@ -255,19 +259,21 @@ function searchButton_spellApi(){
                 case undefined:
                     level = undefined;
                     break;
+                case 0:
+                    level = 'Cantrip'
+                    break;
                 case 1:
-                    level = '1st';
-                    break
+                    level = '1st level';
+                    break;
                 case 2:
-                    level = '2nd';
+                    level = '2nd level';
                     break;
                 case 3:
-                    level = '3rd';
+                    level = '3rd level';
                     break;
                 default:
-                    level = result.level + "th";
+                    level = result.level + "th level";
             }
-            level = level + ' level';
             let school = result.school.name;
             populateSpellCard(
                 name,
