@@ -114,16 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function addFeature(jsonFeature){
-    // Get feature section and add feat
-    const featSection = document.getElementsByClassName('features')[0].getElementsByTagName('div')[0];
-
+function addFeature(jsonFeature, featSection){
     //Create the p element
     const pFeat = document.createElement('p');
     pFeat.classList.add('tooltip');
     pFeat.setAttribute('exp-tooltip', jsonFeature.desc.join("\n\n"));
     pFeat.id = jsonFeature.index;
-    pFeat.innerText = jsonFeature.name;
+    pFeat.innerText =  jsonFeature.name
     
     // Create the tooltip part of it
     const tooltipText = pFeat.getAttribute('exp-tooltip');
@@ -175,7 +172,8 @@ async function classLevel_feats(){
                             const featData = result;
                             console.log(featData.name);
                             console.log(featData.desc);
-                            addFeature(featData);
+                            const featSection = document.getElementsByClassName('features')[0].querySelector('div.class-feats');
+                            addFeature(featData, featSection);
                         })
                         .catch((error) => {
                             console.error('Error fetching specific feat:', error)

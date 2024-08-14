@@ -637,13 +637,24 @@ form.charsheet main section.flavor div:last-child {
 form.charsheet main section.features {
   padding: 10px;
 }
-form.charsheet main section.features div {
+form.charsheet main section.features > div {
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
   flex-direction: column-reverse;
 }
+
+form.charsheet main section.features > div div {
+  display: flex;
+  flex-direction: column;
+}
+
+form.charsheet main section.features > div div p{
+  text-decoration: underline;
+}
+
+
 form.charsheet main section.features div label {
   text-align: center;
 }
