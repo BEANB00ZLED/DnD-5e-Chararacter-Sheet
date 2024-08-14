@@ -33,8 +33,6 @@ form.charsheet {
   width: 800px;
   right: 0;
   left: 0;
-  margin-right: auto;
-  margin-left: auto;
   margin-top: 10px;
 }
 form.charsheet div.textblock {
@@ -73,20 +71,20 @@ form.charsheet :-ms-input-placeholder {
 form.charsheet ::placeholder {
   color: #bbb;
 }
-form.charsheet label {
+form.charsheet label, aside label {
   text-transform: uppercase;
   font-size: 12px;
 }
 form.charsheet header {
   display: flex;
-  align-contents: stretch;
+  align-content: stretch;
   align-items: stretch;
 }
 form.charsheet header section.charname {
   border: 1px solid black;
   border-right: 0;
   border-radius: 10px 0 0 10px;
-  padding: 5px 0;
+  padding: 7px 0;
   background-color: #eee;
   width: 30%;
   display: flex;
@@ -95,13 +93,37 @@ form.charsheet header section.charname {
   top: 0;
   margin: auto;
 }
-form.charsheet header section.charname input {
-  padding: 0.5em;
-  margin: 5px;
-  border: 0;
+form.charsheet header section.charname ul{
+  display: flex;
 }
-form.charsheet header section.charname label {
-  padding-left: 1em;
+form.charsheet header section.charname ul li{
+  display: flex;
+  flex-direction: column-reverse;
+}
+form.charsheet header section.charname ul li.major{
+  width: 80%;
+}
+form.charsheet header section.charname ul li.minor{
+  width: 20%;
+}
+form.charsheet header section.charname ul li input {
+  padding: 0.5em;
+  margin: 0px;
+  border: 1px solid black;
+  border-right: 0;
+  border-left: 0;
+}
+form.charsheet header section.charname ul li label {
+  padding-left: .5em;
+}
+form.charsheet header section.charname ul li.major input {
+  border-radius: 10px 0 0 10px;
+}
+form.charsheet header section.charname ul li.minor input{
+  border: 1px solid black;
+  border-radius: 0 10px 10px 0;
+  border-right: 0px;
+  text-align: center;
 }
 form.charsheet header section.misc {
   width: 70%;
@@ -119,6 +141,10 @@ form.charsheet header section.misc ul li {
   width: 33.33333%;
   display: flex;
   flex-direction: column-reverse;
+}
+.class-level {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 form.charsheet header section.misc ul li label {
   margin-bottom: 5px;
@@ -611,13 +637,24 @@ form.charsheet main section.flavor div:last-child {
 form.charsheet main section.features {
   padding: 10px;
 }
-form.charsheet main section.features div {
+form.charsheet main section.features > div {
   padding: 10px;
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
   flex-direction: column-reverse;
 }
+
+form.charsheet main section.features > div div {
+  display: flex;
+  flex-direction: column;
+}
+
+form.charsheet main section.features > div div p{
+  text-decoration: underline;
+}
+
+
 form.charsheet main section.features div label {
   text-align: center;
 }
@@ -626,3 +663,251 @@ form.charsheet main section.features div textarea {
   padding: 5px;
   height: 43em;
 }
+
+/*Testing below this*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0.5;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 500px; /* Adjust width as needed */
+  background-color: #aaa;
+  color: #fff;
+  text-align: left;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Adjust to place the tooltip above or below the text */
+  left: 10%;
+  transform: translateX(-50%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip.show .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.container {
+  display: flex;
+}
+
+aside {
+  flex: 1;
+  border-radius: 10px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #eee;
+  justify-content: space-around;
+  align-items: center;
+}
+aside > section.spells {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+aside > section.spells > h2 {
+  text-align: center;
+}
+
+section.spells > div.spell-slots {
+  align-content: center;
+  display: flex;
+  flex-direction: column-reverse;
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  align-items: center;
+  margin: 10px;
+  width: 90%;
+}
+
+section.spells > div.spell-slots > label {
+  text-align: center;
+}
+
+section.spells > div.spell-slots > div.bubbles {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+section.spells > div.spell-slots > div.bubbles > div{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  width: 100%;
+  align-items: center;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles > div > label {
+  font-size: 8px;
+  text-align: center;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles > div > input[type=checkbox] {
+  -webkit-appearance: none;
+    -moz-appearance: none;
+      appearance: none;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  order: 1;
+  cursor: pointer;
+}
+
+aside > section.spells > div.spell-slots > div.bubbles > div > input[type=checkbox]:checked {
+  background-color: black; /* Example: black background when checked */
+}
+
+aside > section.spells > div.spell-card {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  background: #bbb;
+  border: 1px solid black;
+  border-radius: 5px;
+  align-items: center;
+  margin: 10px;
+  width: 90%;
+}
+
+aside > section.spells > div.spell-card > div.spell-name {
+  background: white;
+  border-radius: 10px 10px 0 0;
+  width: 90%;
+  text-align: center;
+  margin: 10px;
+}
+
+table.spell-specs {
+  display: table;
+  width: 90%;
+  text-align: center;
+  background-color: white;
+  border-collapse: collapse;
+  height: 1px;
+}
+
+table.spell-specs tr {
+  display: table-row;
+}
+
+table.spell-specs td {
+  display: table-cell;
+  width: 50%;
+  border: 5px solid #bbb;
+}
+
+table.spell-specs td div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+table.spell-specs td div div {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+table.spell-specs td div p {
+  margin: 5px 0 5px 0;
+  padding: 0;
+}
+
+/* Few below are for no outside borders in table */
+table.spell-specs tr td:first-child, th:first-child{
+  border-left: none;
+}
+
+table.spell-specs tr:first-child th{
+  border-top: none;
+}
+
+table.spell-specs tr td:last-child, th:last-child{
+  border-right: none;
+}
+
+table.spell-specs tr:last-child td{
+  border-bottom: none;
+}
+
+div.spell-desc {
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  width: 90%;
+  margin: 20px 0 0 0;
+}
+
+div.spell-desc > p {
+  text-align: left;
+}
+
+section.spells > div.search {
+  width: 90%;
+  align-content: center;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+section.spells > div.search input {
+  width: 80%;
+  border: 1px solid black;
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  padding-left: 10px;
+  float: left;
+}
+
+section.spells > div.search button {
+  width: 20%;
+  float: right;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  background-color: white;
+}
+
+section.spells > div.search button:hover {
+  background-color: #bbb;
+}
+
+div.spell-misc {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+div.spell-misc p {
+  padding: 0;
+  margin: 10px 0 5px 0;
+  color: white;
+}
+
+div.search datalist {
+  display: none;
+}
+
+div.search {
+  position: relative;
+  
+}
+
+
